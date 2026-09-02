@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>SmartCart | The Art of Smart Shopping</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#fff;
+    color:#111;
+    font-family:'Montserrat',Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+
+    height:78px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:#fff;
+
+    border-bottom:1px solid #e5e5e5;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+}
+
+.logo{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:27px;
+
+    letter-spacing:4px;
+
+    font-weight:600;
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:32px;
+
+    list-style:none;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#111;
+
+    font-size:12px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+}
+
+.nav-links a:hover{
+
+    text-decoration:underline;
+}
+
+.nav-icons{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+}
+
+.icon-btn{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+.cart-count{
+
+    font-size:11px;
+
+    background:#111;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    padding:3px 6px;
+
+    position:relative;
+
+    top:-10px;
+
+    left:-6px;
+}
+
+
+/* HERO */
+
+.hero{
+
+    min-height:720px;
+
+    background-image:
+
+    linear-gradient(
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.25)
+    ),
+
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=90");
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+}
+
+.hero-content{
+
+    max-width:800px;
+
+    padding:30px;
+}
+
+.hero-small{
+
+    font-size:12px;
+
+    letter-spacing:5px;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+}
+
+.hero h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:70px;
+
+    font-weight:400;
+
+    line-height:1.05;
+
+    margin-bottom:25px;
+}
+
+.hero p{
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    margin-bottom:35px;
+}
+
+.hero-btn{
+
+    padding:16px 34px;
+
+    background:white;
+
+    color:#111;
+
+    border:none;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.hero-btn:hover{
+
+    background:#111;
+
+    color:#fff;
+}
+
+
+/* SECTION */
+
+.section{
+
+    padding:100px 7%;
+}
+
+.section-heading{
+
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-label{
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:#777;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+}
+
+.section-heading h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:42px;
+
+    font-weight:400;
+}
+
+.section-heading p{
+
+    color:#777;
+
+    margin-top:12px;
+
+    font-size:13px;
+}
+
+
+/* COLLECTION */
+
+.collection{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:2px;
+}
+
+.collection-card{
+
+    height:500px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    cursor:pointer;
+}
+
+.collection-card img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.collection-card:hover img{
+
+    transform:scale(1.05);
+}
+
+.collection-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        transparent 50%,
+        rgba(0,0,0,.7)
+    );
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:35px;
+
+    color:white;
+}
+
+.collection-overlay h3{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:30px;
+
+    font-weight:400;
+}
+
+.collection-overlay p{
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+
+/* RECOMMENDATIONS */
+
+.recommend-nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-bottom:50px;
+}
+
+.recommend-btn{
+
+    background:white;
+
+    border:1px solid #ccc;
+
+    padding:13px 20px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.recommend-btn:hover,
+
+.recommend-btn.active{
+
+    background:#111;
+
+    color:white;
+
+    border-color:#111;
+}
+
+
+/* PRODUCTS */
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:25px;
+}
+
+.product{
+
+    position:relative;
+
+    background:#f7f7f7;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.product:hover{
+
+    transform:translateY(-5px);
+}
+
+.product-image{
+
+    height:380px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.product:hover
+.product-image img{
+
+    transform:scale(1.04);
+}
+
+.product-badge{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:#111;
+
+    color:white;
+
+    padding:7px 10px;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+}
+
+.product-discount{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    background:white;
+
+    padding:7px 10px;
+
+    font-size:9px;
+}
+
+.wishlist{
+
+    position:absolute;
+
+    bottom:15px;
+
+    right:15px;
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    background:white;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.product-info{
+
+    padding:20px;
+
+    background:#fff;
+}
+
+.product-category{
+
+    color:#888;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:8px;
+}
+
+.product-name{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:20px;
+
+    margin-bottom:9px;
+}
+
+.rating{
+
+    font-size:11px;
+
+    margin-bottom:10px;
+}
+
+.price{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+}
+
+.add-btn{
+
+    width:100%;
+
+    padding:12px;
+
+    background:#111;
+
+    color:white;
+
+    border:1px solid #111;
+
+    cursor:pointer;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.add-btn:hover{
+
+    background:white;
+
+    color:#111;
+}
+
+
+/* PERSONALIZED */
+
+.personalized{
+
+    background:#f5f5f5;
+
+    padding:70px 10%;
+
+    margin-top:90px;
+}
+
+.personalized-content{
+
+    max-width:1000px;
+
+    margin:auto;
+}
+
+.personalized h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:38px;
+
+    font-weight:400;
+
+    text-align:center;
+}
+
+.personalized p{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:12px;
+
+    margin:12px 0 35px;
+}
+
+.filters{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+}
+
+.filter label{
+
+    display:block;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:8px;
+}
+
+.filter input,
+.filter select{
+
+    width:100%;
+
+    padding:14px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    outline:none;
+}
+
+.personalized-btn{
+
+    display:block;
+
+    margin:25px auto 0;
+
+    background:#111;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 30px;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+
+    font-size:10px;
+}
+
+
+/* SEARCH */
+
+.search-section{
+
+    padding:60px 7% 20px;
+
+    text-align:center;
+}
+
+.search-box{
+
+    max-width:600px;
+
+    margin:auto;
+
+    border-bottom:1px solid #111;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    padding:15px 5px;
+
+    font-size:14px;
+
+    font-family:'Montserrat';
+}
+
+.search-box button{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+
+/* HOW */
+
+.how{
+
+    background:#111;
+
+    color:white;
+
+    padding:100px 7%;
+}
+
+.how .section-label{
+
+    color:#aaa;
+}
+
+.how .section-heading p{
+
+    color:#aaa;
+}
+
+.steps{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:50px;
+}
+
+.step{
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.step-number{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:40px;
+
+    margin-bottom:20px;
+}
+
+.step h3{
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+}
+
+.step p{
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:12px;
+}
+
+
+/* CART */
+
+.cart-panel{
+
+    position:fixed;
+
+    right:-430px;
+
+    top:0;
+
+    width:420px;
+
+    height:100vh;
+
+    background:white;
+
+    z-index:2000;
+
+    padding:30px;
+
+    box-shadow:-5px 0 30px rgba(0,0,0,.15);
+
+    transition:.4s;
+
+    overflow-y:auto;
+}
+
+.cart-panel.open{
+
+    right:0;
+}
+
+.cart-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:1px solid #ddd;
+
+    padding-bottom:20px;
+
+    margin-bottom:20px;
+}
+
+.cart-header h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-weight:400;
+}
+
+.close-cart{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:22px;
+}
+
+.cart-item{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #eee;
+}
+
+.cart-item img{
+
+    width:75px;
+
+    height:85px;
+
+    object-fit:cover;
+}
+
+.cart-item-info{
+
+    flex:1;
+}
+
+.cart-item-info h4{
+
+    font-family:'Playfair Display',serif;
+
+    margin-bottom:7px;
+}
+
+.quantity{
+
+    margin-top:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.quantity button{
+
+    width:25px;
+
+    height:25px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    cursor:pointer;
+}
+
+.cart-total{
+
+    margin-top:25px;
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+.checkout{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#111;
+
+    color:white;
+
+    border:none;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+
+    font-size:10px;
+}
+
+
+/* FOOTER */
+
+footer{
+
+    background:#f5f5f5;
+
+    padding:70px 7% 30px;
+
+    text-align:center;
+}
+
+.footer-logo{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:28px;
+
+    letter-spacing:4px;
+}
+
+footer p{
+
+    color:#777;
+
+    font-size:11px;
+
+    margin-top:12px;
+
+    letter-spacing:1px;
+}
+
+.footer-line{
+
+    height:1px;
+
+    background:#ddd;
+
+    margin:40px 0 25px;
+}
+
+.copyright{
+
+    font-size:9px;
+
+    color:#999;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .products{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .collection{
+
+        grid-template-columns:1fr;
+    }
+
+    .filters{
+
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+
+        font-size:52px;
+    }
+}
+
+@media(max-width:650px){
+
+    .navbar{
+
+        padding:0 4%;
+    }
+
+    .nav-links{
+
+        display:none;
+    }
+
+    .hero{
+
+        min-height:600px;
+    }
+
+    .hero h1{
+
+        font-size:40px;
+    }
+
+    .section{
+
+        padding:70px 5%;
+    }
+
+    .products{
+
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+
+        grid-template-columns:1fr;
+    }
+
+    .cart-panel{
+
+        width:100%;
+
+        right:-100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+SMARTCART
+</div>
+
+<ul class="nav-links">
+
+<li>
+<a href="#collections">
+Collections
+</a>
+</li>
+
+<li>
+<a href="#recommendations">
+Recommendations
+</a>
+</li>
+
+<li>
+<a href="#personalized">
+For You
+</a>
+</li>
+
+<li>
+<a href="#about">
+About
+</a>
+</li>
+
+</ul>
+
+<div class="nav-icons">
+
+<button
+class="icon-btn"
+onclick="focusSearch()">
+⌕
+</button>
+
+<button
+class="icon-btn"
+onclick="openCart()">
+
+♧
+
+<span
+class="cart-count"
+id="cartCount">
+0
+</span>
+
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-small">
+THE ART OF SMART SHOPPING
+</div>
+
+<h1>
+Shop Less.<br>
+Choose Better.
+</h1>
+
+<p>
+Intelligent recommendations,
+curated specially for you.
+</p>
+
+<button
+class="hero-btn"
+onclick="scrollToProducts()">
+
+Explore Collection
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- COLLECTIONS -->
+
+<section
+class="section"
+id="collections">
+
+<div class="section-heading">
+
+<div class="section-label">
+Discover
+</div>
+
+<h2>
+The Collection
+</h2>
+
+<p>
+Curated products for every kind of lifestyle.
+</p>
+
+</div>
+
+
+<div class="collection">
+
+
+<div
+class="collection-card"
+onclick="loadProducts('Electronics')">
+
+<img
+src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1000&q=90">
+
+<div class="collection-overlay">
+
+<div>
+
+<h3>
+Technology
+</h3>
+
+<p>
+EXPLORE ELECTRONICS
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="collection-card"
+onclick="loadProducts('Clothing')">
+
+<img
+src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1000&q=90">
+
+<div class="collection-overlay">
+
+<div>
+
+<h3>
+Fashion
+</h3>
+
+<p>
+DISCOVER YOUR STYLE
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="collection-card"
+onclick="loadProducts('Books')">
+
+<img
+src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1000&q=90">
+
+<div class="collection-overlay">
+
+<div>
+
+<h3>
+Knowledge
+</h3>
+
+<p>
+EXPLORE BOOKS
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section
+class="search-section"
+id="searchSection">
+
+<div class="section-label">
+Find Your Product
+</div>
+
+<div class="search-box">
+
+<input
+id="searchInput"
+placeholder="Search by product or category..."
+onkeyup="searchProducts()">
+
+<button onclick="searchProducts()">
+⌕
+</button>
+
+</div>
+
+</section>
+
+
+<!-- RECOMMENDATIONS -->
+
+<section
+class="section"
+id="recommendations">
+
+<div class="section-heading">
+
+<div class="section-label">
+Smart Intelligence
+</div>
+
+<h2>
+Curated For You
+</h2>
+
+<p>
+SmartCart analyzes your preferences to find better choices.
+</p>
+
+</div>
+
+
+<div class="recommend-nav">
+
+<button
+class="recommend-btn active"
+onclick="loadType('all',this)">
+All
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('top',this)">
+Top Rated
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('trending',this)">
+Trending
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('budget',this)">
+Budget
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('new',this)">
+New Arrivals
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('premium',this)">
+Premium
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('deals',this)">
+Best Deals
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('student',this)">
+Student Picks
+</button>
+
+<button
+class="recommend-btn"
+onclick="loadType('value',this)">
+Best Value
+</button>
+
+</div>
+
+
+<div
+class="products"
+id="products">
+
+</div>
+
+</section>
+
+
+<!-- PERSONALIZED -->
+
+<section
+class="personalized"
+id="personalized">
+
+<div class="personalized-content">
+
+<div class="section-label"
+style="text-align:center">
+Your Preferences
+</div>
+
+<h2>
+A Selection Made For You
+</h2>
+
+<p>
+Set your preferences and let SmartCart find the right products.
+</p>
+
+
+<div class="filters">
+
+
+<div class="filter">
+
+<label>
+Category
+</label>
+
+<select id="category">
+
+<option value="">
+All Categories
+</option>
+
+<option value="Electronics">
+Electronics
+</option>
+
+<option value="Clothing">
+Fashion
+</option>
+
+<option value="Books">
+Books
+</option>
+
+</select>
+
+</div>
+
+
+<div class="filter">
+
+<label>
+Maximum Budget
+</label>
+
+<input
+type="number"
+id="budget"
+placeholder="₹ 5000">
+
+</div>
+
+
+<div class="filter">
+
+<label>
+Minimum Rating
+</label>
+
+<select id="rating">
+
+<option value="0">
+Any Rating
+</option>
+
+<option value="4">
+4.0 & Above
+</option>
+
+<option value="4.5">
+4.5 & Above
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<button
+class="personalized-btn"
+onclick="personalized()">
+
+Discover My Selection
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section
+class="how"
+id="about">
+
+<div class="section-heading">
+
+<div class="section-label">
+The SmartCart Method
+</div>
+
+<h2>
+How It Works
+</h2>
+
+<p>
+Simple technology. Better decisions.
+</p>
+
+</div>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="step-number">
+01
+</div>
+
+<h3>
+Tell Us
+</h3>
+
+<p>
+Choose your category,
+budget and preferred rating.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+02
+</div>
+
+<h3>
+We Analyze
+</h3>
+
+<p>
+Our Java recommendation engine
+analyzes price, rating,
+popularity and discounts.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+03
+</div>
+
+<h3>
+Discover
+</h3>
+
+<p>
+Receive curated products
+that match your requirements.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- CART -->
+
+<div
+class="cart-panel"
+id="cartPanel">
+
+<div class="cart-header">
+
+<h2>
+Your Selection
+</h2>
+
+<button
+class="close-cart"
+onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div id="cartItems">
+
+<p style="color:#777">
+Your selection is empty.
+</p>
+
+</div>
+
+
+<div class="cart-total">
+
+Total:
+₹<span id="total">
+0
+</span>
+
+</div>
+
+
+<button
+class="checkout"
+onclick="checkout()">
+
+PROCEED TO CHECKOUT
+
+</button>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-logo">
+SMARTCART
+</div>
+
+<p>
+THE ART OF SMART SHOPPING
+</p>
+
+<div class="footer-line"></div>
+
+<div class="copyright">
+
+© 2026 SMARTCART.
+SMART PRODUCT RECOMMENDATION SYSTEM.
+
+</div>
+
+</footer>
+
+
+<script>
+
+const API =
+"http://localhost:8080/recommend";
+
+let productsData = [];
+
+let cart = [];
+
+
+/* LOAD PRODUCTS */
+
+function loadType(type, button){
+
+    if(button){
+
+        document
+        .querySelectorAll(".recommend-btn")
+        .forEach(
+            btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+    }
+
+
+    fetch(
+        API + "?type=" + type
+    )
+
+    .then(
+        response =>
+        response.json()
+    )
+
+    .then(data => {
+
+        productsData = data;
+
+        displayProducts(
+            data,
+            getTitle(type)
+        );
+
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+        showServerError();
+
+    });
+}
+
+
+/* CATEGORY */
+
+function loadProducts(category){
+
+    fetch(
+        API +
+        "?type=all&category=" +
+        encodeURIComponent(category)
+    )
+
+    .then(
+        response =>
+        response.json()
+    )
+
+    .then(data => {
+
+        productsData = data;
+
+        displayProducts(
+            data,
+            category + " Collection"
+        );
+
+        document
+        .getElementById("recommendations")
+        .scrollIntoView();
+
+    });
+}
+
+
+/* TITLES */
+
+function getTitle(type){
+
+    const titles = {
+
+        all:
+        "The Collection",
+
+        top:
+        "Top Rated",
+
+        trending:
+        "Trending Now",
+
+        budget:
+        "Budget Selection",
+
+        new:
+        "New Arrivals",
+
+        premium:
+        "Premium Selection",
+
+        deals:
+        "Exclusive Deals",
+
+        student:
+        "Student Selection",
+
+        value:
+        "Best Value"
+
+    };
+
+    return titles[type]
+    || "The Collection";
+}
+
+
+/* DISPLAY */
+
+function displayProducts(
+    products,
+    title
+){
+
+    const container =
+        document.getElementById(
+            "products"
+        );
+
+
+    if(products.length === 0){
+
+        container.innerHTML = `
+
+        <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:60px">
+
+        <h2 style="
+        font-family:'Playfair Display';
+        font-weight:400">
+
+        No products found.
+
+        </h2>
+
+        <p style="
+        color:#777;
+        margin-top:10px">
+
+        Try changing your preferences.
+
+        </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    products.forEach(product => {
+
+        container.innerHTML += `
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img
+                src="${product.image}"
+                alt="${product.name}">
+
+
+                ${
+                    product.newArrival
+                    ?
+                    `<div class="product-badge">
+                    NEW
+                    </div>`
+                    :
+                    ""
+                }
+
+
+                ${
+                    product.discount > 0
+                    ?
+                    `<div class="product-discount">
+                    ${product.discount}% OFF
+                    </div>`
+                    :
+                    ""
+                }
+
+
+                <button
+                class="wishlist"
+                onclick="wishlist('${product.name}')">
+
+                ♡
+
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-category">
+
+                    ${product.category}
+
+                </div>
+
+
+                <div class="product-name">
+
+                    ${product.name}
+
+                </div>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                    <span style="color:#777">
+                    ${product.rating}
+                    </span>
+
+                </div>
+
+
+                <div class="price">
+
+                    ₹${product.price.toLocaleString()}
+
+                </div>
+
+
+                <button
+                class="add-btn"
+                onclick='addToCart(${JSON.stringify(product)})'>
+
+                Add To Selection
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+}
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+    const value =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    if(value === ""){
+
+        loadType("all", null);
+
+        return;
+    }
+
+
+    fetch(
+        API +
+        "?type=all&search=" +
+        encodeURIComponent(value)
+    )
+
+    .then(
+        response =>
+        response.json()
+    )
+
+    .then(data => {
+
+        productsData = data;
+
+        displayProducts(
+            data,
+            "Search Results"
+        );
+
+    });
+}
+
+
+/* PERSONALIZED */
+
+function personalized(){
+
+    const category =
+        document
+        .getElementById("category")
+        .value;
+
+
+    const budget =
+        document
+        .getElementById("budget")
+        .value
+        || 100000;
+
+
+    const rating =
+        document
+        .getElementById("rating")
+        .value;
+
+
+    let url =
+        API +
+        "?type=all" +
+        "&budget=" +
+        budget +
+        "&rating=" +
+        rating;
+
+
+    if(category !== ""){
+
+        url +=
+        "&category=" +
+        encodeURIComponent(category);
+
+    }
+
+
+    fetch(url)
+
+    .then(
+        response =>
+        response.json()
+    )
+
+    .then(data => {
+
+        productsData = data;
+
+        displayProducts(
+            data,
+            "Your Personal Selection"
+        );
+
+        document
+        .getElementById("recommendations")
+        .scrollIntoView();
+
+    })
+
+    .catch(error => {
+
+        alert(
+            "Please start the Java server."
+        );
+
+    });
+}
+
+
+/* CART */
+
+function addToCart(product){
+
+    const existing =
+        cart.find(
+            item =>
+            item.name === product.name
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        product.quantity = 1;
+
+        cart.push(product);
+
+    }
+
+
+    updateCart();
+
+    openCart();
+}
+
+
+function updateCart(){
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+    let count = 0;
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+        <p style="color:#777">
+
+        Your selection is empty.
+
+        </p>
+
+        `;
+
+    }
+
+
+    cart.forEach(
+        (item,index) => {
+
+            total +=
+                item.price *
+                item.quantity;
+
+
+            count +=
+                item.quantity;
+
+
+            container.innerHTML += `
+
+            <div class="cart-item">
+
+                <img
+                src="${item.image}">
+
+
+                <div class="cart-item-info">
+
+                    <h4>
+                    ${item.name}
+                    </h4>
+
+                    <p>
+                    ₹${item.price.toLocaleString()}
+                    </p>
+
+
+                    <div class="quantity">
+
+                        <button
+                        onclick="changeQuantity(${index},-1)">
+                        -
+                        </button>
+
+                        ${item.quantity}
+
+                        <button
+                        onclick="changeQuantity(${index},1)">
+                        +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+    );
+
+
+    document
+    .getElementById("total")
+    .innerText =
+    total.toLocaleString();
+
+
+    document
+    .getElementById("cartCount")
+    .innerText =
+    count;
+}
+
+
+function changeQuantity(
+    index,
+    change
+){
+
+    cart[index].quantity +=
+        change;
+
+
+    if(
+        cart[index].quantity <= 0
+    ){
+
+        cart.splice(index,1);
+
+    }
+
+
+    updateCart();
+}
+
+
+/* CART OPEN */
+
+function openCart(){
+
+    document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+}
+
+
+/* CART CLOSE */
+
+function closeCart(){
+
+    document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+}
+
+
+/* WISHLIST */
+
+function wishlist(name){
+
+    alert(
+        "♡ " +
+        name +
+        " added to your wishlist."
+    );
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Your selection is empty."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "Thank you for choosing SmartCart."
+    );
+
+}
+
+
+/* SEARCH ICON */
+
+function focusSearch(){
+
+    document
+    .getElementById("searchSection")
+    .scrollIntoView();
+
+
+    setTimeout(
+        () =>
+        document
+        .getElementById("searchInput")
+        .focus(),
+        500
+    );
+}
+
+
+/* HERO BUTTON */
+
+function scrollToProducts(){
+
+    document
+    .getElementById("recommendations")
+    .scrollIntoView();
+
+}
+
+
+/* ERROR */
+
+function showServerError(){
+
+    document
+    .getElementById("products")
+    .innerHTML = `
+
+    <div style="
+    grid-column:1/-1;
+    text-align:center;
+    padding:70px">
+
+    <h2 style="
+    font-family:'Playfair Display';
+    font-weight:400">
+
+    SmartCart is unavailable.
+
+    </h2>
+
+    <p style="
+    color:#777;
+    margin-top:10px">
+
+    Please start ProductServer.java.
+
+    </p>
+
+    </div>
+
+    `;
+}
+
+
+/* INITIAL LOAD */
+
+loadType("all", null);
+
+</script>
+
+
+</body>
+
+</html>
